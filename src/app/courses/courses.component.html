@@ -1,0 +1,14 @@
+<h2>Lista de Cursos</h2>
+
+<ul>
+    <li *ngFor="let course of courses">
+        <strong>{{ course.title }}</strong>
+        <p>{{ course.description }}</p>
+        <button [routerLink]="['/courses', course.id]">
+            Ver curso
+        </button>
+    </li>
+</ul>
+
+
+
