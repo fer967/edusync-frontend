@@ -1,0 +1,66 @@
+<h2>Panel Admin</h2>
+
+<h3>Crear nuevo curso</h3>
+
+<input [(ngModel)]="title" placeholder="Título">
+<input [(ngModel)]="description" placeholder="Descripción">
+
+<button (click)="createCourse()">Crear curso</button>
+
+<p>{{ message }}</p>
+
+<hr>
+
+<h3>Cursos existentes</h3>
+
+<ul>
+    <li *ngFor="let course of courses">
+
+        <!-- CLICK PARA SELECCIONAR -->
+        <div (click)="selectCourse(course.id)" style="cursor:pointer; font-weight:bold;">
+            {{ course.title }} - {{ course.description }}
+        </div>
+
+        <!-- MOSTRAR LECCIONES -->
+        <ul *ngIf="course.lessons?.length">
+            <li *ngFor="let lesson of course.lessons">
+                - {{ lesson.title }}
+            </li>
+        </ul>
+
+    </li>
+</ul>
+
+<hr>
+
+<!-- FORMULARIO SOLO SI HAY CURSO SELECCIONADO -->
+<div *ngIf="selectedCourseId">
+    <h3>Agregar lección</h3>
+
+    <input [(ngModel)]="lessonTitle" placeholder="Título lección">
+    <input [(ngModel)]="lessonContent" placeholder="Contenido">
+
+    <button (click)="createLesson()">Crear lección</button>
+</div>
+
+
+<!-- <h2>Panel Admin</h2>
+
+<h3>Crear nuevo curso</h3>
+
+<input [(ngModel)]="title" placeholder="Título">
+<input [(ngModel)]="description" placeholder="Descripción">
+
+<button (click)="createCourse()">Crear curso</button>
+
+<p>{{ message }}</p>
+
+<hr>
+
+<h3>Cursos existentes</h3>
+
+<ul>
+    <li *ngFor="let course of courses">
+        {{ course.title }} - {{ course.description }}
+    </li>
+</ul> -->

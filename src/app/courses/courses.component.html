@@ -10,5 +10,17 @@
     </li>
 </ul>
 
+<div *ngFor="let course of courses">
+    <strong>{{ course.title }}</strong>
 
+    <div style="background:#ddd; height:15px; width:200px;">
+        <div [style.width.%]="course.progress" style="background:#4caf50; height:100%;">
+        </div>
+    </div>
 
+    <small>{{ course.progress }}%</small>
+
+    <button [routerLink]="['/courses', course.id]">
+        Ver curso
+    </button>
+</div>

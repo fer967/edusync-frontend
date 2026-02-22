@@ -14,6 +14,14 @@ export class CourseService {
   getCourses(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  createCourse(course: any) {
+  return this.http.post('https://localhost:7002/api/courses', course);
+  }
+
+  createLesson(lesson: any) {
+  return this.http.post('https://localhost:7002/api/lessons', lesson);
+  }
 }
 
 

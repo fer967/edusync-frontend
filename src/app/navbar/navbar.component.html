@@ -1,0 +1,25 @@
+<nav style="display:flex; justify-content:space-between; padding:10px; background:#eee;">
+
+    <div>
+        <a routerLink="/">Home</a>
+        <a routerLink="/courses" *ngIf="authService.isAuthenticated()">Cursos</a>
+    </div>
+
+    <div *ngIf="authService.isAuthenticated()">
+        <span>Bienvenido, {{ getUsername() }}</span>
+        <button (click)="logout()">Logout</button>
+    </div>
+
+    <div *ngIf="!authService.isAuthenticated()">
+        <a routerLink="/login">Login</a>
+    </div>
+
+    <a routerLink="/admin" *ngIf="authService.getRole() === 'Admin'">
+        Panel Admin
+    </a>
+
+    <a routerLink="/dashboard" *ngIf="authService.isAuthenticated()">
+        Dashboard
+    </a>
+
+</nav>

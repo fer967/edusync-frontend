@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   private apiUrl = 'https://localhost:7002/api/auth';
@@ -17,7 +18,7 @@ export class AuthService {
 
   register(credentials: any) {
   return this.http.post(`${this.apiUrl}/register`, credentials);
-}
+  }
 
   saveToken(token: string) {
     localStorage.setItem('token', token);
@@ -35,6 +36,14 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+  getRole(): string | null {
+  const token = this.getToken();
+  if (!token) return null;
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  return payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+  }
+
 }
 
 
