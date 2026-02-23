@@ -30,4 +30,10 @@
 
     <small>{{ course.progress }}%</small>
 
+    <div *ngIf="course.progress === 100">
+        <button (click)="downloadCertificate(course.id)">
+            🎓 Descargar certificado
+        </button>
+    </div>
+
 </div>

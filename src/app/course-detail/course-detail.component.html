@@ -9,10 +9,6 @@
     </div>
 </div>
 
-<!-- <p>
-    Progreso: {{ completedCount }} / {{ lessons.length }}
-    ({{ progressPercentage }}%)
-</p> -->
 
 <h2>Lessons</h2>
 
@@ -25,5 +21,11 @@
         <span *ngIf="lesson.completed">
             ✔ Completada
         </span>
+
+        <div *ngIf="lesson.filePath">
+            <a [href]="'https://localhost:7002' + lesson.filePath" target="_blank">
+                ⬇ Descargar {{ lesson.fileName }}
+            </a>
+        </div>
     </li>
 </ul>

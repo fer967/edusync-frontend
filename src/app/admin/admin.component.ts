@@ -21,7 +21,10 @@ export class AdminComponent implements OnInit {
   lessonTitle = '';
   lessonContent = '';
 
-  constructor(private courseService: CourseService) {}
+  selectedFile: File | null = null;
+  selectedLessonId: string | null = null;
+
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -78,6 +81,59 @@ export class AdminComponent implements OnInit {
         error: () => {
           this.message = 'Error al crear lección';
         }
+      });
+  }
+
+  deleteLesson(lessonId: string) {
+    if (!confirm('¿Eliminar lección?')) return;
+
+    this.courseService.deleteLesson(lessonId)
+      .subscribe(() => {
+        this.loadCourses();
+      });
+  }
+
+  editCourse(course: any) {
+    this.title = course.title;
+    this.description = course.description;
+    this.selectedCourseId = course.id;
+  }
+
+  updateCourse() {
+    const updated = {
+      title: this.title,
+      description: this.description
+    };
+
+    this.courseService.updateCourse(this.selectedCourseId!, updated)
+      .subscribe(() => {
+        this.loadCourses();
+        this.title = '';
+        this.description = '';
+      });
+  }
+
+  deleteCourse(id: string) {
+    if (!confirm('¿Eliminar curso?')) return;
+
+    this.courseService.deleteCourse(id)
+      .subscribe(() => this.loadCourses());
+  }
+
+  onFileSelected(event: any, lessonId: string) {
+    this.selectedFile = event.target.files[0];
+    this.selectedLessonId = lessonId;
+  }
+
+  uploadFile() {
+    if (!this.selectedFile || !this.selectedLessonId) return;
+
+    this.courseService
+      .uploadLessonFile(this.selectedLessonId, this.selectedFile)
+      .subscribe(() => {
+        this.selectedFile = null;
+        this.selectedLessonId = null;
+        this.loadCourses();
       });
   }
 

@@ -21,19 +21,37 @@ export class RegisterComponent {
   ) {}
 
   register() {
-    const credentials = {
-      username: this.username,
-      password: this.password
-    };
 
-    this.authService.register(credentials)
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/login']);
-        },
-        error: (err) => {
-          this.message = err.error;
-        }
-      });
+  if (!this.username || !this.password) {
+    this.message = 'Todos los campos son obligatorios';
+    return;
   }
+
+  if (this.password.length < 6) {
+    this.message = 'La contraseña debe tener al menos 6 caracteres';
+    return;
+  }
+
+  const credentials = {
+    username: this.username,
+    password: this.password
+  };
+
+  this.authService.register(credentials)
+    .subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        this.message = err.error;
+      }
+    });
 }
+
+}
+
+
+// if (!Regex.IsMatch(request.Password, @"^(?=.*[A-Z])(?=.*\d).{6,}$"))
+//     return BadRequest("La contraseña debe tener al menos 6 caracteres, una mayúscula y un número");
+
+
