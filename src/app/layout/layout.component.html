@@ -1,1 +1,49 @@
-<p>layout works!</p>
+<app-navbar></app-navbar>
+
+<mat-sidenav-container class="app-container">
+
+    <!-- <mat-sidenav mode="side" opened>
+        <h3 class="logo">EduSync</h3>
+        <button mat-button routerLink="/courses">Cursos</button>
+        <button mat-button routerLink="/dashboard">Dashboard</button>
+        <button mat-button routerLink="/admin">Admin</button>
+    </mat-sidenav> -->
+
+    <mat-sidenav-content [ngClass]="currentClass">
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+
+<!-- <mat-sidenav-container class="app-container">
+
+    <mat-sidenav mode="side" opened>
+        <h3 class="logo">EduSync</h3>
+        <button mat-button routerLink="/courses">
+            Cursos
+        </button>
+        <button mat-button routerLink="/dashboard">
+            Dashboard
+        </button>
+        <button mat-button routerLink="/admin">
+            Admin
+        </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content [ngClass]="getContentClass()">
+        <mat-toolbar color="primary">
+            <span>EduSync Platform</span>
+            <span class="spacer"></span>
+            <button mat-button (click)="logout()">Logout</button>
+        </mat-toolbar>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+
+</mat-sidenav-container> -->

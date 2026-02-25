@@ -1,0 +1,43 @@
+/* .navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-left button,
+.nav-right button {
+    margin-right: 10px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.username mat-icon {
+    margin-right: 5px;
+} */
+
+.sidenav-container {
+    height: 64px;
+}
+
+mat-sidenav {
+    width: 220px;
+    padding: 20px 10px;
+}
+
+.app-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

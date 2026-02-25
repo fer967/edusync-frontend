@@ -1,0 +1,53 @@
+.app-container {
+    height: 100vh;
+}
+
+.content {
+    padding: 30px;
+    min-height: 100%;
+}
+
+/* HOME */
+.home-background {
+    background-image: url('/assets/home-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* RESTO */
+.default-background {
+    background-color: blueviolet;
+    /* background-color: #f4f6f9; */
+}
+
+mat-sidenav {
+    background-color: #111827;
+    /* gris azulado oscuro */
+    color: white;
+    padding-top: 20px;
+    width: 220px;
+}
+
+mat-sidenav button {
+    color: #cbd5e1;
+    justify-content: flex-start;
+}
+
+mat-sidenav button:hover {
+    background-color: #1f2937;
+    color: white;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    color: #111827;
+    font-weight: 600;
+}

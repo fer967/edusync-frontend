@@ -1,63 +1,96 @@
-<h2>Panel Admin</h2>
+<h2 class="page-title">Panel Admin</h2>
 
-<h3>Crear nuevo curso</h3>
+<mat-card class="create-card">
+    <mat-card-title>
+        {{ selectedCourseId ? 'Editar curso' : 'Crear nuevo curso' }}
+    </mat-card-title>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="title">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input matInput [(ngModel)]="description">
+        </mat-form-field>
+        <button mat-raised-button color="primary" *ngIf="!selectedCourseId" (click)="createCourse()">
+            Crear
+        </button>
+        <button mat-raised-button color="accent" *ngIf="selectedCourseId" (click)="updateCourse()">
+            Actualizar
+        </button>
+    </div>
+    <p class="message">{{ message }}</p>
+</mat-card>
 
-<input [(ngModel)]="title" placeholder="Título">
-<input [(ngModel)]="description" placeholder="Descripción">
-
-<button *ngIf="!selectedCourseId" (click)="createCourse()">
-    Crear curso
-</button>
-
-<button *ngIf="selectedCourseId" (click)="updateCourse()">
-    Actualizar curso
-</button>
-
-<p>{{ message }}</p>
-
-<hr>
-
-<h3>Cursos existentes</h3>
-
-<ul>
-    <li *ngFor="let course of courses">
-        <!-- CLICK PARA SELECCIONAR -->
-        <div (click)="selectCourse(course.id)" style="cursor:pointer; font-weight:bold;">
-            {{ course.title }} - {{ course.description }}
+<h3 class="section-title">Cursos existentes</h3>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let course of courses">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ course.title }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ course.description }}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- BOTONES CURSO -->
+        <div class="course-actions">
+            <button mat-button color="primary" (click)="editCourse(course)">
+                Editar
+            </button>
+            <button mat-button color="warn" (click)="deleteCourse(course.id)">
+                Eliminar
+            </button>
         </div>
-        <ul *ngIf="course.lessons?.length">
-            <ul *ngIf="course.lessons?.length">
-                <li *ngFor="let lesson of course.lessons">
-                    {{ lesson.title }}
-                    <button (click)="deleteLesson(lesson.id)">
-                        Eliminar
+        <mat-divider></mat-divider>
+        <!-- LECCIONES -->
+        <div *ngIf="course.lessons?.length; else noLessons">
+            <div *ngFor="let lesson of course.lessons" class="lesson-card">
+                <div class="lesson-header">
+                    <strong>{{ lesson.title }}</strong>
+                    <button mat-icon-button color="warn" (click)="deleteLesson(lesson.id)">
+                        <mat-icon>delete</mat-icon>
                     </button>
-                    <br>
-                    <input type="file" (change)="onFileSelected($event, lesson.id)">
-                    <button (click)="uploadFile()">
+                </div>
+                <!-- SUBIR ARCHIVO -->
+                <div class="file-section">
+                    <div class="drop-zone" [class.drag-active]="dragActive" (dragover)="onDragOver($event)"
+                        (dragleave)="onDragLeave()" (drop)="onDrop($event, lesson.id)" (click)="fileInput.click()">
+                        <p *ngIf="!selectedFileName">Arrastrá el archivo aquí o hacé click</p>
+                        <p *ngIf="selectedFileName">📄 {{ selectedFileName }}</p>
+                        <input #fileInput type="file" hidden (change)="onFileSelected($event, lesson.id)">
+                    </div>
+                    <button mat-raised-button color="primary" (click)="uploadFile(lesson.id)">
                         Subir archivo
                     </button>
-                    <div *ngIf="lesson.fileName">
-                        📎 Archivo actual: {{ lesson.fileName }}
-                    </div>
-                </li>
-            </ul>
-        </ul>
-        <button (click)="editCourse(course)">Editar</button>
-        <button (click)="deleteCourse(course.id)">Eliminar</button>
-    </li>
-</ul>
-
-<hr>
-
-<!-- FORMULARIO SOLO SI HAY CURSO SELECCIONADO -->
-<div *ngIf="selectedCourseId">
-    <h3>Agregar lección</h3>
-    <input [(ngModel)]="lessonTitle" placeholder="Título lección">
-    <input [(ngModel)]="lessonContent" placeholder="Contenido">
-    <button (click)="createLesson()">Crear lección</button>
-</div>
-
-
-
-
+                </div>
+                <div *ngIf="lesson.fileName" class="file-info">
+                    📎 Archivo actual: {{ lesson.fileName }}
+                </div>
+                <button mat-button color="warn" (click)="deleteFile(lesson.id)">
+                    Eliminar archivo
+                </button>
+            </div>
+        </div>
+        <ng-template #noLessons>
+            <p>No hay lecciones aún.</p>
+        </ng-template>
+        <mat-divider></mat-divider>
+        <!-- AGREGAR LECCION -->
+        <div class="new-lesson-form">
+            <h4>Agregar lección</h4>
+            <mat-form-field appearance="outline">
+                <mat-label>Título</mat-label>
+                <input matInput [(ngModel)]="lessonTitle">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contenido</mat-label>
+                <input matInput [(ngModel)]="lessonContent">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="selectCourse(course.id); createLesson()">
+                Crear lección
+            </button>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

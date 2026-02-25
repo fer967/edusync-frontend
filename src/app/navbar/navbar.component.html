@@ -1,25 +1,60 @@
-<nav style="display:flex; justify-content:space-between; padding:10px; background:#eee;">
+<!-- <mat-toolbar color="primary" class="navbar">
 
-    <div>
-        <a routerLink="/">Home</a>
-        <a routerLink="/courses" *ngIf="authService.isAuthenticated()">Cursos</a>
-    </div>
+    <span class="app-title">EduSync</span>
 
-    <div *ngIf="authService.isAuthenticated()">
-        <span>Bienvenido, {{ getUsername() }}</span>
-        <button (click)="logout()">Logout</button>
-    </div>
+    <span class="spacer"></span>
 
-    <div *ngIf="!authService.isAuthenticated()">
-        <a routerLink="/login">Login</a>
-    </div>
+    <span *ngIf="authService.isAuthenticated()" class="user-info">
+        {{ getUsername() }}
+    </span>
 
-    <a routerLink="/admin" *ngIf="authService.getRole() === 'Admin'">
-        Panel Admin
-    </a>
+    <button mat-button *ngIf="authService.isAuthenticated()" (click)="logout()">
+        Logout
+    </button>
 
-    <a routerLink="/dashboard" *ngIf="authService.isAuthenticated()">
-        Dashboard
-    </a>
+</mat-toolbar> -->
 
-</nav>
+
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
+        <button mat-button routerLink="/" (click)="isMobile && sidenav.close()">
+            Home
+        </button>
+        <button mat-button routerLink="/courses" *ngIf="authService.isAuthenticated()"
+            (click)="isMobile && sidenav.close()">
+            Cursos
+        </button>
+        <button mat-button routerLink="/admin" *ngIf="authService.getRole() === 'Admin'"
+            (click)="isMobile && sidenav.close()">
+            Admin
+        </button>
+        <button mat-button routerLink="/dashboard" *ngIf="authService.isAuthenticated()"
+            (click)="isMobile && sidenav.close()">
+            Dashboard
+        </button>
+        <button mat-button color="warn" *ngIf="authService.isAuthenticated()"
+            (click)="logout(); isMobile && sidenav.close()">
+            Logout
+        </button>
+        <button mat-button routerLink="/login" *ngIf="!authService.isAuthenticated()"
+            (click)="isMobile && sidenav.close()">
+            Login
+        </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button *ngIf="isMobile" (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="app-title">EduSync</span>
+            <span class="spacer"></span>
+            <span *ngIf="authService.isAuthenticated() && !isMobile">
+                <mat-icon>account_circle</mat-icon>
+                {{ getUsername() }}
+            </span>
+        </mat-toolbar>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

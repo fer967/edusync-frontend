@@ -45,7 +45,11 @@ export class CourseService {
     formData.append('file', file);
     return this.http.post(
       `https://localhost:7002/api/lessons/${lessonId}/upload`,
-      formData
+      formData,
+      {
+        reportProgress: true,
+        observe: 'events'
+      }
     );
   }
 
@@ -53,6 +57,12 @@ export class CourseService {
     return this.http.get(
       `https://localhost:7002/api/courses/${courseId}/certificate`,
       { responseType: 'blob' }
+    );
+  }
+
+  deleteLessonFile(lessonId: string) {
+    return this.http.delete(
+      `https://localhost:7002/api/lessons/${lessonId}/file`
     );
   }
 }
