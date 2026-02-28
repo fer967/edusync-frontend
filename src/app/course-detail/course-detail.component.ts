@@ -31,31 +31,24 @@ export class CourseDetailComponent implements OnInit {
   }
 
   loadProgress() {
-    this.http.get<any[]>(`https://localhost:7002/api/studentprogress/course/${this.courseId}`)
+    this.http.get<any[]>(`https://edusync-backend-x316.onrender.com/api/studentprogress/course/${this.courseId}`)
       .subscribe(progress => {
-
         this.lessons.forEach(lesson => {
           const found = progress.find(p => p.lessonId === lesson.id);
           lesson.completed = found?.isCompleted || false;
           // 🔥 forzar actualización visual
           this.lessons = [...this.lessons];
         });
-
       });
   }
 
   ngOnInit() {
-
     this.courseId = this.route.snapshot.paramMap.get('id')!;
-
-    this.http.get<any>(`https://localhost:7002/api/courses/${this.courseId}`)
+    this.http.get<any>(`https://edusync-backend-x316.onrender.com/api/courses/${this.courseId}`)
       .subscribe(data => {
-
         this.lessons = data.lessons;
-
         // cargar progreso UNA sola vez
         this.loadProgress();
-
         // intentar sincronizar pendientes
         this.retryPending();
       });
@@ -65,7 +58,6 @@ export class CourseDetailComponent implements OnInit {
   retryPending() {
     const pending = JSON.parse(localStorage.getItem('pendingSync') || '[]');
     if (pending.length === 0) return;
-
     this.syncService.sync(pending).subscribe({
       next: () => {
         console.log('Pendientes sincronizados');

@@ -49,23 +49,6 @@ export class LoginComponent {
 }
 
 
-  // login() {
-  //   const credentials = {
-  //     username: this.username,
-  //     password: this.password
-  //   };
-
-  //   this.authService.login(credentials)
-  //     .subscribe({
-  //       next: (response) => {
-  //         this.authService.saveToken(response.token);
-  //         this.router.navigate(['/courses']); // 👈 redirección
-  //       },
-  //       error: () => {
-  //         this.message = 'Credenciales incorrectas';
-  //       }
-  //     });
-  // }
 
 
 

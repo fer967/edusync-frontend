@@ -47,25 +47,6 @@ export class LayoutComponent {
 
 
 
-// export class LayoutComponent {
-
-//   constructor(
-//     private authService: AuthService,
-//     private router: Router
-//   ) { }
-
-//   logout() {
-//     this.authService.logout();
-//     this.router.navigate(['/login']);
-//   }
-
-//   getContentClass(): string {
-//     return this.router.url === '/'
-//       ? 'home-background'
-//       : 'default-background';
-//   }
-
-// }
 
 
 
