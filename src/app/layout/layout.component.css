@@ -2,6 +2,16 @@
     height: 100vh;
 }
 
+mat-sidenav-content {
+    min-height: 100vh;
+    display: block;
+}
+
+
+/* .app-container {
+    height: 100vh;
+} */
+
 .content {
     padding: 30px;
     min-height: 100%;
@@ -9,11 +19,31 @@
 
 /* HOME */
 .home-background {
+    position: relative;
+    min-height: 100vh;
     background-image: url('/assets/home-bg.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
 }
+
+.home-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.home-background .content {
+    position: relative;
+    z-index: 1;
+}
+
+/* .home-background {
+    background-image: url('assets/home-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+} */
 
 /* RESTO */
 .default-background {
