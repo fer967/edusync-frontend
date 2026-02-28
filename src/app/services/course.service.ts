@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 
 export class CourseService {
-
-  private apiUrl = 'https://localhost:7002/api/courses';
+  
+  private apiUrl = 'https://edusync-backend-x316.onrender.com/api/courses';
+  // private apiUrl = 'https://localhost:7002/api/courses';
 
   constructor(private http: HttpClient) { }
 
@@ -17,34 +18,34 @@ export class CourseService {
   }
 
   createCourse(course: any) {
-    return this.http.post('https://localhost:7002/api/courses', course);
+    return this.http.post(this.apiUrl, course);
   }
 
   createLesson(lesson: any) {
-    return this.http.post('https://localhost:7002/api/lessons', lesson);
+    return this.http.post(`${this.apiUrl}/lessons`, lesson);
   }
 
   updateCourse(id: string, course: any) {
-    return this.http.put(`https://localhost:7002/api/courses/${id}`, course);
+    return this.http.put(`${this.apiUrl}/${id}`, course);
   }
 
   deleteCourse(id: string) {
-    return this.http.delete(`https://localhost:7002/api/courses/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   updateLesson(id: string, lesson: any) {
-    return this.http.put(`https://localhost:7002/api/lessons/${id}`, lesson);
+    return this.http.put(`${this.apiUrl}/lessons/${id}`, lesson);
   }
 
   deleteLesson(id: string) {
-    return this.http.delete(`https://localhost:7002/api/lessons/${id}`);
+    return this.http.delete(`${this.apiUrl}/lessons/${id}`);
   }
 
   uploadLessonFile(lessonId: string, file: File) {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(
-      `https://localhost:7002/api/lessons/${lessonId}/upload`,
+      `${this.apiUrl}/${lessonId}/upload`,
       formData,
       {
         reportProgress: true,
@@ -55,14 +56,14 @@ export class CourseService {
 
   downloadCertificate(courseId: string) {
     return this.http.get(
-      `https://localhost:7002/api/courses/${courseId}/certificate`,
+      `${this.apiUrl}/${courseId}/certificate`,
       { responseType: 'blob' }
     );
   }
 
   deleteLessonFile(lessonId: string) {
     return this.http.delete(
-      `https://localhost:7002/api/lessons/${lessonId}/file`
+      `${this.apiUrl}/${lessonId}/file`
     );
   }
 }

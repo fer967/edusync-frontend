@@ -6,7 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SyncService {
 
-  private apiUrl = 'https://localhost:7002/api/StudentProgress/sync';
+  private apiUrl = 'https://edusync-backend-x316.onrender.com/api/StudentProgress/sync';
+  // private apiUrl = 'https://localhost:7002/api/StudentProgress/sync';
 
   constructor(private http: HttpClient) {}
 
@@ -27,23 +28,6 @@ export class SyncService {
 }
 
 
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class SyncService {
-
-//   private apiUrl = 'https://localhost:7002/api/sync';
-
-//   constructor(private http: HttpClient) {}
-
-//   sync(courses: any[]) {
-//     return this.http.post(this.apiUrl, {
-//       courses
-//     });
-//   }
-// }
 
 
