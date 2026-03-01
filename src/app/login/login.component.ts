@@ -33,6 +33,7 @@ export class LoginComponent {
   })
   .subscribe({
     next: (response) => {
+      console.log(response);                      // prueba
       this.authService.saveToken(response.token);
       this.router.navigate(['/courses']);
     },

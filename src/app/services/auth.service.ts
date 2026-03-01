@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-  private apiUrl = 'https://edusync-backend-x316.onrender.com/api';
-
+  private apiUrl = 'https://edusync-backend-x316.onrender.com/api/auth';
   // private apiUrl = 'https://localhost:7002/api/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
