@@ -23,9 +23,16 @@
         </span>
 
         <div *ngIf="lesson.filePath">
-            <a [href]="'https://edusync-backend-x316.onrender.com' + lesson.filePath" target="_blank">
+            <button (click)="downloadFile(lesson.id)">
                 ⬇ Descargar {{ lesson.fileName }}
-            </a>
+            </button>
         </div>
     </li>
 </ul>
+
+
+<!-- <div *ngIf="lesson.filePath">
+            <a [href]="'https://edusync-backend-x316.onrender.com' + lesson.filePath" target="_blank">
+                ⬇ Descargar {{ lesson.fileName }}
+            </a>
+        </div> -->

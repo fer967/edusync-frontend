@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SyncService } from '../services/sync.service';
+import { CourseService } from '../services/course.service'; 
 
 @Component({
   selector: 'app-course-detail',
@@ -18,7 +19,8 @@ export class CourseDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private syncService: SyncService
+    private syncService: SyncService,
+    private courseService: CourseService
   ) { }
 
   get completedCount() {
@@ -90,6 +92,18 @@ export class CourseDetailComponent implements OnInit {
         this.savePending(payload);
       }
     });
+  }
+
+  downloadFile(lessonId: string) {
+    this.courseService.downloadLessonFile(lessonId)
+      .subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'archivo';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
   }
 
 }

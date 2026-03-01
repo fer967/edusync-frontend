@@ -56,6 +56,7 @@ export class CourseService {
     );
   }
 
+
   downloadLessonFile(lessonId: string) {
     return this.http.get(
       `${this.lessonsUrl}/${lessonId}/file`,
@@ -79,9 +80,9 @@ export class CourseService {
 }
 
 
-  // getFileUrl(filePath: string): string {
-  //   return `https://edusync-backend-x316.onrender.com${filePath}`;
-  // }
+// getFileUrl(filePath: string): string {
+//   return `https://edusync-backend-x316.onrender.com${filePath}`;
+// }
 
 
 
