@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class CourseService {
-  
+
   private apiUrl = 'https://edusync-backend-x316.onrender.com/api/courses';
   // private apiUrl = 'https://localhost:7002/api/courses';
 
@@ -21,9 +21,14 @@ export class CourseService {
     return this.http.post(this.apiUrl, course);
   }
 
+  private lessonsUrl = 'https://edusync-backend-x316.onrender.com/api/lessons';
   createLesson(lesson: any) {
-    return this.http.post(`${this.apiUrl}/lessons`, lesson);
+    return this.http.post(this.lessonsUrl, lesson);
   }
+
+  // createLesson(lesson: any) {
+  //   return this.http.post(`${this.apiUrl}/lessons`, lesson);
+  // }
 
   updateCourse(id: string, course: any) {
     return this.http.put(`${this.apiUrl}/${id}`, course);
@@ -34,12 +39,20 @@ export class CourseService {
   }
 
   updateLesson(id: string, lesson: any) {
-    return this.http.put(`${this.apiUrl}/lessons/${id}`, lesson);
+    return this.http.put(`${this.lessonsUrl}/${id}`, lesson);
   }
 
   deleteLesson(id: string) {
-    return this.http.delete(`${this.apiUrl}/lessons/${id}`);
+    return this.http.delete(`${this.lessonsUrl}/${id}`);
   }
+
+  // updateLesson(id: string, lesson: any) {
+  //   return this.http.put(`${this.apiUrl}/lessons/${id}`, lesson);
+  // }
+
+  // deleteLesson(id: string) {
+  //   return this.http.delete(`${this.apiUrl}/lessons/${id}`);
+  // }
 
   uploadLessonFile(lessonId: string, file: File) {
     const formData = new FormData();
