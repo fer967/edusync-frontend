@@ -23,7 +23,7 @@
         </span>
 
         <div *ngIf="lesson.filePath">
-            <button (click)="downloadFile(lesson.id)">
+            <button (click)="downloadFile(lesson.id, lesson.fileName)">
                 ⬇ Descargar {{ lesson.fileName }}
             </button>
         </div>
