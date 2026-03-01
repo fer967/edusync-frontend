@@ -26,9 +26,6 @@ export class CourseService {
     return this.http.post(this.lessonsUrl, lesson);
   }
 
-  // createLesson(lesson: any) {
-  //   return this.http.post(`${this.apiUrl}/lessons`, lesson);
-  // }
 
   updateCourse(id: string, course: any) {
     return this.http.put(`${this.apiUrl}/${id}`, course);
@@ -46,19 +43,12 @@ export class CourseService {
     return this.http.delete(`${this.lessonsUrl}/${id}`);
   }
 
-  // updateLesson(id: string, lesson: any) {
-  //   return this.http.put(`${this.apiUrl}/lessons/${id}`, lesson);
-  // }
-
-  // deleteLesson(id: string) {
-  //   return this.http.delete(`${this.apiUrl}/lessons/${id}`);
-  // }
 
   uploadLessonFile(lessonId: string, file: File) {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post(
-      `${this.apiUrl}/${lessonId}/upload`,
+      `${this.lessonsUrl}/${lessonId}/upload`,
       formData,
       {
         reportProgress: true,
