@@ -21,18 +21,18 @@ export class CourseService {
     return this.http.post(this.apiUrl, course);
   }
 
-  private lessonsUrl = 'https://edusync-backend-x316.onrender.com/api/lessons';
-  createLesson(lesson: any) {
-    return this.http.post(this.lessonsUrl, lesson);
-  }
-
-
   updateCourse(id: string, course: any) {
     return this.http.put(`${this.apiUrl}/${id}`, course);
   }
 
   deleteCourse(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+
+  private lessonsUrl = 'https://edusync-backend-x316.onrender.com/api/lessons';
+  createLesson(lesson: any) {
+    return this.http.post(this.lessonsUrl, lesson);
   }
 
   updateLesson(id: string, lesson: any) {
@@ -42,7 +42,6 @@ export class CourseService {
   deleteLesson(id: string) {
     return this.http.delete(`${this.lessonsUrl}/${id}`);
   }
-
 
   uploadLessonFile(lessonId: string, file: File) {
     const formData = new FormData();
@@ -57,6 +56,12 @@ export class CourseService {
     );
   }
 
+  deleteLessonFile(lessonId: string) {
+    return this.http.delete(
+      `${this.lessonsUrl}/${lessonId}/file`
+    );
+  }
+
   downloadCertificate(courseId: string) {
     return this.http.get(
       `${this.apiUrl}/${courseId}/certificate`,
@@ -64,11 +69,6 @@ export class CourseService {
     );
   }
 
-  deleteLessonFile(lessonId: string) {
-    return this.http.delete(
-      `${this.apiUrl}/${lessonId}/file`
-    );
-  }
 }
 
 
