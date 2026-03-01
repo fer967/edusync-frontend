@@ -64,7 +64,7 @@ export class CourseService {
 
   downloadCertificate(courseId: string) {
     return this.http.get(
-      `${this.apiUrl}/${courseId}/certificate`,
+      `${this.apiUrl, courseId}/${courseId}/certificate`,
       { responseType: 'blob' }
     );
   }
