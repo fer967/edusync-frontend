@@ -64,11 +64,17 @@ export class CourseService {
 
   downloadCertificate(courseId: string) {
     return this.http.get(
-      `${this.apiUrl, courseId}/${courseId}/certificate`,
+      `${this.apiUrl}/${courseId}/certificate`,
       { responseType: 'blob' }
     );
   }
 
 }
+
+
+  // getFileUrl(filePath: string): string {
+  //   return `https://edusync-backend-x316.onrender.com${filePath}`;
+  // }
+
 
 

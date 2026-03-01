@@ -1,21 +1,3 @@
-<!-- <mat-toolbar color="primary" class="navbar">
-
-    <span class="app-title">EduSync</span>
-
-    <span class="spacer"></span>
-
-    <span *ngIf="authService.isAuthenticated()" class="user-info">
-        {{ getUsername() }}
-    </span>
-
-    <button mat-button *ngIf="authService.isAuthenticated()" (click)="logout()">
-        Logout
-    </button>
-
-</mat-toolbar> -->
-
-
-
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile">
         <button mat-button routerLink="/" (click)="isMobile && sidenav.close()">
