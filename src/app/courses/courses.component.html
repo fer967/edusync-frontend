@@ -1,4 +1,20 @@
-<h2>Lista de Cursos</h2>
+<div class="courses-container">
+    <h2>Lista de Cursos</h2>
+
+    <div class="courses-grid">
+        <div class="course-card" *ngFor="let course of courses">
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+
+            <button [routerLink]="['/courses', course.id]">
+                Ver curso
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h2>Lista de Cursos</h2>
 
 <ul>
     <li *ngFor="let course of courses">
@@ -8,19 +24,4 @@
             Ver curso
         </button>
     </li>
-</ul>
-
-<!-- <div *ngFor="let course of courses">
-    <strong>{{ course.title }}</strong>
-
-    <div style="background:#ddd; height:15px; width:200px;">
-        <div [style.width.%]="course.progress" style="background:#4caf50; height:100%;">
-        </div>
-    </div>
-
-    <small>{{ course.progress }}%</small>
-
-    <button [routerLink]="['/courses', course.id]">
-        Ver curso
-    </button>
-</div> -->
+</ul> -->

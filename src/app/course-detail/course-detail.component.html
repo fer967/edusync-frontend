@@ -1,4 +1,42 @@
-<div style="margin-bottom: 15px;">
+<div class="detail-container">
+
+    <div class="progress-card">
+        <h3>Progreso</h3>
+        <p>{{ completedCount }} / {{ lessons.length }} ({{ progressPercentage }}%)</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="progressPercentage"></div>
+        </div>
+    </div>
+
+    <h2>Lecciones</h2>
+
+    <div class="lessons-grid">
+        <div class="lesson-card" *ngFor="let lesson of lessons">
+
+            <h4>{{ lesson.title }}</h4>
+
+            <button class="complete-btn" (click)="markLessonCompleted(lesson)">
+                Marcar completada
+            </button>
+
+            <span class="completed" *ngIf="lesson.completed">
+                ✔ Completada
+            </span>
+
+            <div *ngIf="lesson.filePath">
+                <button class="download-btn" (click)="downloadFile(lesson.filePath)">
+                    ⬇ Descargar {{ lesson.fileName }}
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div style="margin-bottom: 15px;">
     <strong>Progreso:</strong>
     {{ completedCount }} / {{ lessons.length }}
     ({{ progressPercentage }}%)
@@ -8,7 +46,6 @@
     <div [style.width.%]="progressPercentage" style="background: #4caf50; height: 100%; border-radius: 10px;">
     </div>
 </div>
-
 
 <h2>Lessons</h2>
 
@@ -21,13 +58,10 @@
         <span *ngIf="lesson.completed">
             ✔ Completada
         </span>
-
         <div *ngIf="lesson.filePath">
             <button (click)="downloadFile(lesson.filePath)">
                 ⬇ Descargar {{ lesson.fileName }}
             </button>
         </div>
     </li>
-</ul>
-
-
+</ul> -->
