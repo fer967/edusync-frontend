@@ -57,13 +57,6 @@ export class CourseService {
   }
 
 
-  downloadLessonFile(lessonId: string) {
-    return this.http.get(
-      `${this.lessonsUrl}/${lessonId}/file`,
-      { responseType: 'blob' }
-    );
-  }
-
   deleteLessonFile(lessonId: string) {
     return this.http.delete(
       `${this.lessonsUrl}/${lessonId}/file`
@@ -80,9 +73,6 @@ export class CourseService {
 }
 
 
-// getFileUrl(filePath: string): string {
-//   return `https://edusync-backend-x316.onrender.com${filePath}`;
-// }
 
 
 
