@@ -1,4 +1,28 @@
-<h2>Registro</h2>
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Registro</h2>
+
+        <input [(ngModel)]="username" placeholder="Username">
+
+        <input [(ngModel)]="password" [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password (mínimo 6 caracteres)">
+
+        <label class="show-pass">
+            <input type="checkbox" [(ngModel)]="showPassword">
+            Mostrar contraseña
+        </label>
+
+        <button (click)="register()">Crear cuenta</button>
+
+        <p class="message">{{ message }}</p>
+
+        <a routerLink="/login">Volver al login</a>
+    </div>
+</div>
+
+
+
+<!-- <h2>Registro</h2>
 
 <input [(ngModel)]="username" placeholder="Username">
 <input [(ngModel)]="password" type="password" placeholder="Password">
@@ -7,4 +31,4 @@
 
 <p>{{ message }}</p>
 
-<a routerLink="/login">Volver al login</a>
+<a routerLink="/login">Volver al login</a> -->

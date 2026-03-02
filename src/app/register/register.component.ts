@@ -14,6 +14,7 @@ export class RegisterComponent {
   username = '';
   password = '';
   message = '';
+  showPassword = false;
 
   constructor(
     private authService: AuthService,

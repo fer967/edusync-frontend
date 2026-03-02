@@ -8,10 +8,6 @@ mat-sidenav-content {
 }
 
 
-/* .app-container {
-    height: 100vh;
-} */
-
 .content {
     padding: 30px;
     min-height: 100%;
@@ -38,12 +34,7 @@ mat-sidenav-content {
     z-index: 1;
 }
 
-/* .home-background {
-    background-image: url('assets/home-bg.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-} */
+
 
 /* RESTO */
 .default-background {
