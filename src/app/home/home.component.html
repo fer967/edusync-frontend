@@ -1,11 +1,43 @@
 <h1>Bienvenido al sistema EduSync</h1>
 <p>EduSync es una plataforma de gestión educativa diseñada para facilitar la administración de instituciones educativas,
     mejorar la comunicación entre estudiantes, profesores y padres, y optimizar los procesos académicos.</p>
+
 <div class="home-actions">
+
+    <!-- Si NO está logueado -->
+    <ng-container *ngIf="!isLoggedIn; else loggedTemplate">
+
+        <button mat-raised-button color="primary" routerLink="/login">
+            Ingresar
+        </button>
+
+        <button mat-stroked-button color="accent" routerLink="/how-it-works">
+            ¿Cómo funciona?
+        </button>
+
+    </ng-container>
+
+    <!-- Si está logueado -->
+    <ng-template #loggedTemplate>
+
+        <button mat-raised-button color="primary" routerLink="/courses">
+            Ver Cursos
+        </button>
+
+        <button mat-stroked-button color="accent" routerLink="/dashboard">
+            Ir al Dashboard
+        </button>
+
+    </ng-template>
+
+</div>
+
+
+<!-- <div class="home-actions">
     <button mat-raised-button color="primary" routerLink="/login">
         Ingresar
     </button>
     <button mat-stroked-button color="accent" routerLink="/how-it-works">
         ¿Cómo funciona?
     </button>
-</div>
+</div> -->
