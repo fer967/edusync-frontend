@@ -9,6 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
+import{ HowItWorksComponent} from './how-it-works/how-it-works.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,8 @@ export const routes: Routes = [
             { path: 'courses', component: CoursesComponent, canActivate: [authGuard] },
             { path: 'courses/:id', component: CourseDetailComponent },
             { path: 'admin', component: AdminComponent, canActivate: [adminGuard] },
-            { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] }
+            { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+            { path: 'how-it-works', component: HowItWorksComponent }
         ]
     }
 ];
