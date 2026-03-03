@@ -26,14 +26,14 @@
 <h3 class="section-title">Cursos existentes</h3>
 <mat-accordion>
     <mat-expansion-panel *ngFor="let course of courses">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{ course.title }}
-            </mat-panel-title>
-            <mat-panel-description>
-                {{ course.description }}
-            </mat-panel-description>
+
+        <mat-expansion-panel-header class="course-header">
+            <div class="course-header-content">
+                <span class="course-title">{{ course.title }}</span>
+                <span class="course-description">{{ course.description }}</span>
+            </div>
         </mat-expansion-panel-header>
+
         <!-- BOTONES CURSO -->
         <div class="course-actions">
             <button mat-button color="primary" (click)="editCourse(course)">
@@ -94,3 +94,13 @@
         </div>
     </mat-expansion-panel>
 </mat-accordion>
+
+
+<!-- <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ course.title }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ course.description }}
+            </mat-panel-description>
+        </mat-expansion-panel-header> -->

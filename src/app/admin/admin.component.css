@@ -5,7 +5,6 @@
     background: linear-gradient(135deg, #1e293b, #0f172a);
 }
 
-/* Hace que el contenido tenga ancho controlado */
 mat-card,
 mat-accordion {
     max-width: 1100px;
@@ -98,6 +97,40 @@ mat-accordion {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.course-header-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-title {
+    font-weight: 600;
+}
+
+.course-description {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* En desktop que vuelva a horizontal */
+@media (min-width: 769px) {
+    .course-header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .course-description {
+        font-size: 14px;
+    }
+}
+
+mat-expansion-panel {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
