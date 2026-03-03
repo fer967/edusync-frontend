@@ -8,7 +8,8 @@ import { SyncService } from '../services/sync.service';
   selector: 'app-courses',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './courses.component.html'
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.css']
 })
 
 export class CoursesComponent implements OnInit {

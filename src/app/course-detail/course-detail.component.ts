@@ -9,8 +9,10 @@ import { CourseService } from '../services/course.service';
   selector: 'app-course-detail',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './course-detail.component.html'
+  templateUrl: './course-detail.component.html',
+  styleUrls: ['./course-detail.component.css']
 })
+
 export class CourseDetailComponent implements OnInit {
 
   lessons: any[] = [];
