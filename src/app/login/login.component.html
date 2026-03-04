@@ -1,20 +1,14 @@
 <div class="auth-container">
     <div class="auth-card">
         <h2>Login</h2>
-
         <input [(ngModel)]="username" placeholder="Username">
-
         <input [(ngModel)]="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password">
-
         <label class="show-pass">
             <input type="checkbox" [(ngModel)]="showPassword">
             Mostrar contraseña
         </label>
-
         <button (click)="login()">Ingresar</button>
-
         <p class="message">{{ message }}</p>
-
         <p>
             ¿No tenés cuenta?
             <a routerLink="/register">Registrarse</a>
@@ -24,14 +18,3 @@
 
 
 
-<!-- <h2>Login</h2>
-
-<input [(ngModel)]="username" placeholder="Username">
-<input [(ngModel)]="password" type="password" placeholder="Password">
-
-<button (click)="login()">Ingresar</button>
-
-<p>
-    ¿No tenés cuenta?
-    <a routerLink="/register">Registrarse</a>
-</p> -->

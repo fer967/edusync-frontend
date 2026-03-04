@@ -8,8 +8,8 @@ import { CourseService } from '../services/course.service';
   imports: [CommonModule],
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
 
+export class DashboardComponent implements OnInit {
   courses: any[] = [];
   totalCourses = 0;
   completedCourses = 0;

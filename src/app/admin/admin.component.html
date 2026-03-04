@@ -26,15 +26,12 @@
 <h3 class="section-title">Cursos existentes</h3>
 <mat-accordion>
     <mat-expansion-panel *ngFor="let course of courses">
-
         <mat-expansion-panel-header class="course-header">
             <div class="course-header-content">
                 <span class="course-title">{{ course.title }}</span>
                 <span class="course-description">{{ course.description }}</span>
             </div>
         </mat-expansion-panel-header>
-
-        <!-- BOTONES CURSO -->
         <div class="course-actions">
             <button mat-button color="primary" (click)="editCourse(course)">
                 Editar
@@ -44,7 +41,6 @@
             </button>
         </div>
         <mat-divider></mat-divider>
-        <!-- LECCIONES -->
         <div *ngIf="course.lessons?.length; else noLessons">
             <div *ngFor="let lesson of course.lessons" class="lesson-card">
                 <div class="lesson-header">
@@ -53,7 +49,6 @@
                         <mat-icon>delete</mat-icon>
                     </button>
                 </div>
-                <!-- SUBIR ARCHIVO -->
                 <div class="file-section">
                     <div class="drop-zone" [class.drag-active]="dragActive" (dragover)="onDragOver($event)"
                         (dragleave)="onDragLeave()" (drop)="onDrop($event, lesson.id)" (click)="fileInput.click()">
@@ -77,7 +72,6 @@
             <p>No hay lecciones aún.</p>
         </ng-template>
         <mat-divider></mat-divider>
-        <!-- AGREGAR LECCION -->
         <div class="new-lesson-form">
             <h4>Agregar lección</h4>
             <mat-form-field appearance="outline">
@@ -96,11 +90,3 @@
 </mat-accordion>
 
 
-<!-- <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{ course.title }}
-            </mat-panel-title>
-            <mat-panel-description>
-                {{ course.description }}
-            </mat-panel-description>
-        </mat-expansion-panel-header> -->

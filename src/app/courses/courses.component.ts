@@ -40,7 +40,6 @@ export class CoursesComponent implements OnInit {
     return Math.round((completed / course.lessons.length) * 100);
   }
 
-
   markCompleted(course: any) {
     course.completed = true;
     course.updatedAt = new Date().toISOString();
@@ -49,7 +48,7 @@ export class CoursesComponent implements OnInit {
   sync() {
   this.syncService.sync(this.courses)
     .subscribe(() => {
-      this.loadCourses(); // 🔥 recalcula progreso
+      this.loadCourses(); 
       alert('Sincronización completada');
     });
 }

@@ -10,8 +10,8 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
 
+export class LoginComponent {
   username = '';
   password = '';
   message = '';
@@ -23,32 +23,28 @@ export class LoginComponent {
   ) { }
 
   login() {
-
-  if (!this.username || !this.password) {
-    this.message = 'Todos los campos son obligatorios';
-    return;
-  }
-
-  this.authService.login({
-    username: this.username,
-    password: this.password
-  })
-  .subscribe({
-    next: (response) => {
-      console.log(response);                      // prueba
-      this.authService.saveToken(response.token);
-      this.router.navigate(['/courses']);
-    },
-    error: (err) => {
-      if (err.status === 401) {
-        this.message = 'Usuario o contraseña incorrectos';
-      } else {
-        this.message = 'Error al iniciar sesión';
-      }
+    if (!this.username || !this.password) {
+      this.message = 'Todos los campos son obligatorios';
+      return;
     }
-  });
-}
-
+    this.authService.login({
+      username: this.username,
+      password: this.password
+    })
+      .subscribe({
+        next: (response) => {
+          this.authService.saveToken(response.token);
+          this.router.navigate(['/courses']);
+        },
+        error: (err) => {
+          if (err.status === 401) {
+            this.message = 'Usuario o contraseña incorrectos';
+          } else {
+            this.message = 'Error al iniciar sesión';
+          }
+        }
+      });
+  }
 }
 
 

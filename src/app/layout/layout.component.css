@@ -7,13 +7,11 @@ mat-sidenav-content {
     display: block;
 }
 
-
 .content {
     padding: 30px;
     min-height: 100%;
 }
 
-/* HOME */
 .home-background {
     position: relative;
     min-height: 100vh;
@@ -34,12 +32,8 @@ mat-sidenav-content {
     z-index: 1;
 }
 
-
-
-/* RESTO */
 .default-background {
     background-color: blueviolet;
-    /* background-color: #f4f6f9; */
 }
 
 mat-sidenav {

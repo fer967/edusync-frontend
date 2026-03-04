@@ -14,7 +14,6 @@ import { CourseService } from '../services/course.service';
 })
 
 export class CourseDetailComponent implements OnInit {
-
   lessons: any[] = [];
   courseId!: string;
 
@@ -40,7 +39,6 @@ export class CourseDetailComponent implements OnInit {
         this.lessons.forEach(lesson => {
           const found = progress.find(p => p.lessonId === lesson.id);
           lesson.completed = found?.isCompleted || false;
-          // 🔥 forzar actualización visual
           this.lessons = [...this.lessons];
         });
       });
@@ -51,13 +49,10 @@ export class CourseDetailComponent implements OnInit {
     this.http.get<any>(`https://edusync-backend-x316.onrender.com/api/courses/${this.courseId}`)
       .subscribe(data => {
         this.lessons = data.lessons;
-        // cargar progreso UNA sola vez
         this.loadProgress();
-        // intentar sincronizar pendientes
         this.retryPending();
       });
   }
-
 
   retryPending() {
     const pending = JSON.parse(localStorage.getItem('pendingSync') || '[]');
@@ -66,7 +61,6 @@ export class CourseDetailComponent implements OnInit {
       next: () => {
         console.log('Pendientes sincronizados');
         localStorage.removeItem('pendingSync');
-        // 🔥 volver a cargar progreso real
         this.loadProgress();
       }
     });
@@ -77,7 +71,6 @@ export class CourseDetailComponent implements OnInit {
     pending.push(item);
     localStorage.setItem('pendingSync', JSON.stringify(pending));
   }
-
 
   markLessonCompleted(lesson: any) {
     lesson.completed = true;

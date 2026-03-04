@@ -29,7 +29,6 @@ export class CourseService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-
   private lessonsUrl = 'https://edusync-backend-x316.onrender.com/api/lessons';
   createLesson(lesson: any) {
     return this.http.post(this.lessonsUrl, lesson);
@@ -55,7 +54,6 @@ export class CourseService {
       }
     );
   }
-
 
   deleteLessonFile(lessonId: string) {
     return this.http.delete(

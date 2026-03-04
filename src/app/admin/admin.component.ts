@@ -29,22 +29,17 @@ import { HttpEventType } from '@angular/common/http';
 })
 
 export class AdminComponent implements OnInit {
-
   title = '';
   description = '';
   courses: any[] = [];
   message = '';
-
   selectedCourseId: string | null = null;
   lessonTitle = '';
   lessonContent = '';
-
   selectedFile: File | null = null;
   selectedLessonId: string | null = null;
-
   dragActive = false;
   selectedFileName: string | null = null;
-
   uploadProgress = 0;
 
   constructor(private courseService: CourseService) { }
@@ -183,7 +178,6 @@ export class AdminComponent implements OnInit {
 
   deleteFile(lessonId: string) {
     if (!confirm('¿Eliminar archivo?')) return;
-
     this.courseService.deleteLessonFile(lessonId)
       .subscribe(() => {
         this.loadCourses();

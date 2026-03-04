@@ -12,12 +12,10 @@ export class SyncService {
   constructor(private http: HttpClient) {}
 
   sync(progressItems: any[]) {
-
     const token = localStorage.getItem('token');
-
     return this.http.post(
       this.apiUrl,
-      progressItems, // 👈 se envía array directo
+      progressItems, 
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`
