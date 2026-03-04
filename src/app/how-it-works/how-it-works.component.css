@@ -55,8 +55,18 @@
 
 .step-card mat-icon {
     font-size: 40px;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* .step-card mat-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+} */
 
 .step-card h3 {
     margin-bottom: 10px;
