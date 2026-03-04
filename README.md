@@ -1,59 +1,165 @@
-# EdusyncFrontend
+🚀 EduSync Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.20.
+Frontend oficial de EduSync, una plataforma educativa web para gestión de cursos, lecciones y seguimiento de progreso académico.
 
-## Development server
+Desarrollado con Angular 19 (Standalone Components) y Angular Material.
 
-To start a local development server, run:
+🌐 Demo
 
-```bash
+🔗 Producción: (agregar URL cuando quieras)
+🔗 Backend API: https://edusync-backend-x316.onrender.com
+
+📌 Descripción
+
+EduSync es una plataforma LMS (Learning Management System) que permite:
+
+Registro y autenticación de usuarios
+
+Gestión de roles (Admin / Estudiante)
+
+Visualización de cursos
+
+Gestión de lecciones
+
+Descarga de materiales (Cloudinary)
+
+Seguimiento de progreso
+
+Panel administrativo
+
+🧩 Arquitectura
+
+El proyecto utiliza:
+
+Angular 19
+
+Standalone Components
+
+Angular Material
+
+Guards para protección de rutas
+
+JWT almacenado en localStorage
+
+Arquitectura modular por features
+
+Routing con Layout principal
+
+Responsive design
+
+🗂️ Estructura del proyecto
+src/
+ ├── app/
+ │   ├── admin/              → Panel de administración
+ │   ├── courses/            → Lista de cursos
+ │   ├── course-detail/      → Detalle y progreso
+ │   ├── dashboard/          → Panel del estudiante
+ │   ├── home/               → Página principal
+ │   ├── how-it-works/       → Vista institucional
+ │   ├── login/              → Autenticación
+ │   ├── register/           → Registro
+ │   ├── guards/             → authGuard / adminGuard
+ │   ├── layout/             → Layout principal con sidenav
+ │   ├── navbar/             → Barra de navegación
+ │   └── services/           → Comunicación con API
+🔐 Autenticación
+
+Login con JWT
+
+Token almacenado en localStorage
+
+Protección de rutas con authGuard
+
+Protección de panel admin con adminGuard
+
+📚 Funcionalidades principales
+👨‍🎓 Estudiante
+
+Ver cursos disponibles
+
+Acceder a lecciones
+
+Marcar lecciones como completadas
+
+Descargar archivos asociados
+
+Visualizar barra de progreso
+
+Acceder a dashboard personal
+
+👨‍💼 Administrador
+
+Crear / editar / eliminar cursos
+
+Crear / eliminar lecciones
+
+Subir archivos a Cloudinary
+
+Eliminar archivos
+
+Gestión completa del contenido académico
+
+☁️ Integraciones
+
+Backend: ASP.NET Core Web API
+
+Base de datos: PostgreSQL (Neon)
+
+Storage de archivos: Cloudinary
+
+Deploy: Render
+
+🎨 UX & UI
+
+Diseño responsive
+
+Vista institucional “Cómo funciona”
+
+Home inteligente (detecta sesión activa)
+
+Cards modernas para cursos y lecciones
+
+Barra de progreso animada
+
+Panel admin optimizado para mobile
+
+⚙️ Instalación local
+1️⃣ Clonar el repositorio
+git clone https://github.com/tuusuario/edusync-frontend.git
+cd edusync-frontend
+2️⃣ Instalar dependencias
+npm install
+3️⃣ Ejecutar en modo desarrollo
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abrir:
 
-## Code scaffolding
+http://localhost:4200
+🏗️ Build de producción
+ng build --configuration production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+El resultado se genera en:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+dist/
+🧪 Testing
 ng test
-```
+📈 Próximas mejoras
 
-## Running end-to-end tests
+Animaciones avanzadas
 
-For end-to-end (e2e) testing, run:
+Certificados descargables en PDF
 
-```bash
-ng e2e
-```
+Modo oscuro global
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Sistema de notificaciones
 
-## Additional Resources
+Gestión de instructores
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+👨‍💻 Autor
+
+Desarrollado por Gabriel Fernando Correa
+Proyecto orientado a portfolio Full Stack.
+
+
+
+
